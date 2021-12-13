@@ -28,29 +28,34 @@ router.post("/",(req,res)=>{
     //uploading
     upload(req,res,async (err)=>
     {
-        //validateing req
+        try {
+            //validateing req
 
-        if(!req.file)return res.json({error:"All fiels are reqired"})
-        
-        if(err)
-        {
-            return res.status(500).send({error:err.message})
+            if(!req.file)return res.json({error:"All fiels are reqired"})
+            
+            if(err)
+            {
+                return res.status(500).send({error:err.message})
+            }
+            const file=new File({
+                filename:req.file.filename,
+                uuid:uuid4(),
+                path:req.file.path,
+                size:req.file.size
+            })
+            const response=await file.save()
+            return res.json({file:`${process.env.APP_BASE_URL}/files/${response.uuid}`})
+        } catch (error) {
+            res.render(error)
         }
-        const file=new File({
-            filename:req.file.filename,
-            uuid:uuid4(),
-            path:req.file.path,
-            size:req.file.size
-        })
-        const response=await file.save()
-        return res.json({file:`${process.env.APP_BASE_URL}/files/${response.uuid}`})
     })
 
 })
 
 router.post('/send', async (req,res)=>{
 
-    const {uuid,emailto,emailfrom}=req.body
+    try {
+        const {uuid,emailto,emailfrom}=req.body
     console.log(`${uuid},${emailto},${emailfrom}`);
     if(!uuid||!emailto||!emailfrom)
     {
@@ -77,6 +82,9 @@ router.post('/send', async (req,res)=>{
             expires: '24 hrs'})
     })
     return res.send({success:true})
+    } catch (error) {
+        res.render('errorpage')
+    }
 })
 
 module.exports=router;
