@@ -1,5 +1,6 @@
 const router=require("express").Router();
 const multer=require("multer")
+require("dotenv").config()
 const path=require("path")
 const File=require("../models/file")
 const {v4:uuid4}=require("uuid")

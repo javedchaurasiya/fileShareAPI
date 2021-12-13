@@ -5,8 +5,7 @@ function connectDB() {
   mongoose.connect(
     process.env.MONGO_CONNECTION_URL, 
     {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
+      useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology: true, useFindAndModify : true
     }
   );
   const db = mongoose.connection;

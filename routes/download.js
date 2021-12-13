@@ -1,5 +1,6 @@
 const router=require('express').Router();
 const File=require('../models/file')
+require("dotenv").config()
 
 router.get('/:uuid',async (req,res)=>
 {
