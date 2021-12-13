@@ -1,20 +1,18 @@
 require("dotenv").config()
 const mongoose=require("mongoose")
 
-function connectDB() {
-  mongoose.connect(
-    process.env.MONGO_CONNECTION_URL, 
-    {
-      useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology: true, useFindAndModify : true
-    }
-  );
-  const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
-  console.log("Connected successfully");
-});
+function connectDB()
+{
+    mongoose.connect("mongodb+srv://shareApp:9525087591a@cluster0.zbcwz.mongodb.net/shareapp?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology:true})
+    const connection=mongoose.connection
+
+    connection
+    .once('open', function () {
+      console.log('MongoDB running');
+    })
+    .on('error', function (err) {
+      console.log("Error mongodb");
+    });
 }
 
-// mIAY0a6u1ByJsWWZ
-
-module.exports = connectDB;
+module.exports=connectDB; 
