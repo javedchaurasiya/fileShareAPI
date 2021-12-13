@@ -3,16 +3,15 @@ const mongoose=require("mongoose")
 
 function connectDB()
 {
-    mongoose.connect(process.env.MONGO_CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology:true})
-    const connection=mongoose.connection
-
-    connection
-    .once('open', function () {
-      console.log('MongoDB running');
-    })
-    .on('error', function (err) {
-      console.log("Error");
-    });
+  mongoose.connect(process.env.MONGO_CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology:true})
+  .then(()=>
+  {
+    console.log("DB connected");
+  })
+  .catch((error)=>
+  {
+    console.log("Connection Error");
+  })
 }
 
 module.exports=connectDB;

@@ -3,13 +3,17 @@ const File=require('../models/file')
 
 router.get('/:uuid',async (req,res)=>
 {
-    const file=await File.findOne({uuid:req.params.uuid})
-    if(!file)
-    {
+    try {
+        const file=await File.findOne({uuid:req.params.uuid})
+        if(!file)
+        {
+            return res.render('errorpage')
+        }
+        const filepath=`${__dirname}/../${file.path}`
+        res.download(filepath)
+    } catch (error) {
         return res.render('errorpage')
     }
-    const filepath=`${__dirname}/../${file.path}`
-    res.download(filepath)
 })
 
 
