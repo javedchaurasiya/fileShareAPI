@@ -6,8 +6,8 @@ require("dotenv").config()
 
 const PORT=process.env.PORT||3000
 
-const connectDB=require('./config/db')
-connectDB();
+require('./config/db')
+
 app.use(express.json())
 app.set('views',path.join(__dirname,"/views"))
 app.set('view engine','ejs')
@@ -15,7 +15,7 @@ app.set('view engine','ejs')
 //demo
 app.get("/",(req,res)=>
 {
-    res.send("hello")
+    res.send(`hello ${process.env.MONGO_CONNECTION_URL}`)
 })
 app.use('/api/files',require("./routes/files"))
 app.use('/files',require("./routes/show"))
