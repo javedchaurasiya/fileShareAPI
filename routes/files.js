@@ -29,10 +29,7 @@ router.post("/",(req,res)=>{
     //uploading
     upload(req,res,async (err)=>
     {
-        try {
-            //validateing req
-
-            if(!req.file)return res.json({error:"All fiels are reqired"})
+        if(!req.file)return res.json({error:"All fields are reqired"})
             
             if(err)
             {
@@ -45,10 +42,8 @@ router.post("/",(req,res)=>{
                 size:req.file.size
             })
             const response=await file.save()
+            console.log(response);
             return res.json({file:`${process.env.APP_BASE_URL}/files/${response.uuid}`})
-        } catch (error) {
-            res.render(error)
-        }
     })
 
 })
