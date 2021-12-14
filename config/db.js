@@ -1,7 +1,7 @@
 require("dotenv").config()
 const mongoose=require("mongoose")
 
-mongoose.connect("mongodb+srv://shareApp:9525087591a@cluster0.zbcwz.mongodb.net/shareapp?retryWrites=true&w=majority",{
+mongoose.connect(process.env.MONGO_CONNECTION_URL,{
     useNewUrlParser:true,
     useUnifiedTopology:true
     // useCreateIndex:true
