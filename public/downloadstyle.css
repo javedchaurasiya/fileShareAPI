@@ -1,0 +1,75 @@
+:root{
+    --main-bg-color:#eff5fe;
+    --border-color:#0288d147;
+    --container-width:500px;
+}
+
+body, html{
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--main-bg-color);
+    height:100%;
+    padding:0;
+    margin: 0;
+    overflow: hidden;
+
+}
+
+body,.down-zone,.download-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.download-container
+{
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow:  0px 20px 20px #0000002e;
+}
+.icon-container
+{
+    width: 75px;
+    height: 100px;
+    position: relative;
+}
+
+.down-zone
+{
+    width: var(--container-width);
+    min-height: 200px;
+    border: 2px dashed var(--border-color);
+    margin: 30px;
+    border-radius: 10px;
+    /* transition: all 200ms ease; */
+}
+.desc
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main
+{
+    font-size: 20px;
+    /* margin: 0px; */
+}
+.file-name, .size
+{
+    font-size: 15px;
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+.downbtn
+{
+    padding: 10px 30px;
+    font-size: 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 9px;
+    cursor: pointer;
+    background: var(--main-bg-color);
+    box-shadow: 3px 3px 6px 0px #CCDBE8 inset, -3px -3px 6px 1px rgba(255,255,255,0.5) inset;
+}

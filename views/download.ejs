@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../downloadstyle.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Page</title>
 </head>
 <body>
-    <p> <%-filename%></p>
-    <p><%-filesize%></p>
-    <p><%-uuid%></p>
-    <p><%-download%></p>
+    <section class="download-container">
+        <div class="down-zone">
+            <div class="icon-container">
+                <img src="../down.png" alt="down-icon" class="center" draggable="false">
+            </div>
+            <div class="desc">
+                <p class="main">Your File is Ready to Download</p>
+                <p class="file-name"><%- filename%></p>
+                <p class="size"><%= filesize/1000%> KB</p>
+                <p class="download"><a href="<%= download%>"><button class="downbtn">Download</button></a></p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
